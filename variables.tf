@@ -1,28 +1,37 @@
 ################ connection ###########################
 
 variable "ips" {
-  type    = list(string)
-  default = []
+  description = "A list of ips to install chef automate on"
+  type        = list(string)
+  default     = []
+}
+
+variable "instance_count" {
+  description = "The number of automate instances being created"
+  default     = 1
 }
 
 variable "ssh_user_name" {
-  type    = string
-  default = "chefuser"
+  description = "The ssh user name used to access the ip addresses provided"
+  type        = string
 }
 
 variable "ssh_user_pass" {
-  type    = string
-  default = "P@55w0rd1"
+  description = "The ssh user password used to access the ip addresses"
+  type        = string
+  default     = ""
 }
 
 variable "ssh_user_private_key" {
-  type    = string
-  default = ""
+  description = "The ssh user key used to access the ip addresses"
+  type        = string
+  default     = ""
 }
 
 ################# policyfile module ###################
 
 variable "cookbooks" {
+  description = "the cookbooks used to deploy chef automate"
   default = {
     "chef_automate_wrapper" = "github: 'devoptimist/chef_automate_wrapper', tag: 'v0.1.7'",
     "chef-ingredient" = "github: 'chef-cookbooks/chef-ingredient', tag: 'v3.1.1'"
@@ -30,76 +39,81 @@ variable "cookbooks" {
 }
 
 variable "runlist" {
-  type    = list(string)
-  default = ["chef_automate_wrapper::default"]
+  description = "The chef run list used to deploy chef automate"
+  type        = list(string)
+  default     = ["chef_automate_wrapper::default"]
 }
 
 ################ attribute json #####################
 
 variable "data_source_script_path" {
-  type    = string
-  default = "/var/tmp/chef_automate_details.sh"
+  description = "The location of the automate data source script"
+  type        = string
+  default     = "/var/tmp/chef_automate_details.sh"
 }
 
 variable "channel" {
-  type    = string
-  default = "current"
+  description = "The chef install channel to use for the chef automate"
+  type        = string
+  default     = "current"
 }
 
 variable "install_version" {
-  type    = string
-  default = "latest"
+  description = "The version of chef automate to install"
+  type        = string
+  default     = "latest"
 }
 
 variable "config" {
-  type    = string
-  default = ""
+  description = "Any extra config that needs to be passed to the automate server can be placed in this string"
+  type        = string
+  default     = ""
 }
 
 variable "accept_license" {
-  default = true
+  description = "Shall we accept the chef product license"
+  type        = bool
+  default     = true
 }
 
 variable "json_credentials_path" {
-  type    = string
-  default = "/tmp/automate-credentials.json"
+  description = "The path to write the automate credentials to"
+  type        = string
+  default     = "/tmp/automate-credentials.json"
 }
 
 variable "data_collector_token" {
-  type    = string
-  default = ""
-}
-
-variable "hostname" {
-  type    = string
-  default = ""
+  description = "The token used to access the data collector end point"
+  type        = string
+  default     = ""
 }
 
 variable "admin_password" {
-  type    = string
-  default = ""
-}
-
-variable "instance_count" {
-  default = 1
+  description = "Sets the automate admin password"
+  type        = string
+  default     = ""
 }
 
 variable "chef_automate_license" {
-  type    = string
-  default = ""
+  description = "The automate license string if you have purchased a chef automate license"
+  type        = string
+  default     = ""
 }
 
 variable "fqdns" {
-  type    = list(string)
-  default = []
+  description = "A list of fully qualified host names to apply to each automate server being created"
+  type        = list(string)
+  default     = []
 }
 
 variable "certs" {
-  type    = list(string)
-  default = []
+  description = "A list of ssl certificates to apply to each automate server"
+  type        = list(string)
+  default     = []
 }
 
 variable "cert_keys" {
-  type    = list(string)
-  default = []
+  description = "A list of ssl private keys to apply to each automate server"
+  type        = list(string)
+  default     = []
 }

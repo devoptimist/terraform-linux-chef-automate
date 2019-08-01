@@ -29,16 +29,16 @@ locals {
 }
 
 module "chef_automate_build" {
-  source               = "/home/steveb/workspace/terraform/modules/devoptimist/terraform-chef-policyfile"
-  ips                  = var.ips
-  instance_count       = local.instance_count
-  dna                  = local.dna
-  module_inputs        = local.module_inputs
-  cookbooks            = var.cookbooks
-  runlist              = var.runlist
-  ssh_user_name        = var.ssh_user_name
-  ssh_user_pass        = var.ssh_user_pass
-  ssh_user_private_key = var.ssh_user_private_key
+  source           = "/home/steveb/workspace/terraform/modules/devoptimist/terraform-chef-policyfile"
+  ips              = var.ips
+  instance_count   = local.instance_count
+  dna              = local.dna
+  module_inputs    = local.module_inputs
+  cookbooks        = var.cookbooks
+  runlist          = var.runlist
+  user_name        = var.ssh_user_name
+  user_pass        = var.ssh_user_pass
+  user_private_key = var.ssh_user_private_key
 }
 
 data "external" "a2_secrets" {
