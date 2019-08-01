@@ -3,12 +3,10 @@
 variable "ips" {
   description = "A list of ips to install chef automate on"
   type        = list(string)
-  default     = []
 }
 
 variable "instance_count" {
   description = "The number of automate instances being created"
-  default     = 1
 }
 
 variable "ssh_user_name" {
@@ -17,13 +15,13 @@ variable "ssh_user_name" {
 }
 
 variable "ssh_user_pass" {
-  description = "The ssh user password used to access the ip addresses"
+  description = "The ssh user password used to access the ip addresses (either ssh_user_pass or ssh_user_private_key needs to be set)"
   type        = string
   default     = ""
 }
 
 variable "ssh_user_private_key" {
-  description = "The ssh user key used to access the ip addresses"
+  description = "The ssh user key used to access the ip addresses (either ssh_user_pass or ssh_user_private_key needs to be set)"
   type        = string
   default     = ""
 }
