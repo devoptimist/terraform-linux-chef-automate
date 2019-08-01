@@ -9,7 +9,7 @@ Supported platform families:
 
 ```hcl
 
-module "chef_server" {
+module "chef_automate" {
   source               = "devoptimist/chef-automate/linux"
   version              = "0.0.1"
   ips                  = ["172.16.0.23"]
