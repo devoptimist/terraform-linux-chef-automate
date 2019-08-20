@@ -29,8 +29,8 @@ locals {
 }
 
 module "chef_automate_build" {
-  source            = "devoptimist/policyfile/chef"
-  version           = "0.0.3"
+  source           = "devoptimist/policyfile/chef"
+  version          = "0.0.4"
   ips              = var.ips
   instance_count   = local.instance_count
   dna              = local.dna
@@ -43,8 +43,8 @@ module "chef_automate_build" {
 }
 
 data "external" "a2_secrets" {
-  count = local.instance_count
-  program = ["bash", "${path.module}/files/data_source.sh"]
+  count      = local.instance_count
+  program    = ["bash", "${path.module}/files/data_source.sh"]
   depends_on = ["module.chef_automate_build"]
 
   query = {
