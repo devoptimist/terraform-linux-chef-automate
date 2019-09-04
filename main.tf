@@ -30,7 +30,7 @@ locals {
 
 module "chef_automate_build" {
   source           = "devoptimist/policyfile/chef"
-  version          = "0.0.7"
+  version          = "0.0.8"
   ips              = var.ips
   instance_count   = local.instance_count
   dna              = local.dna
