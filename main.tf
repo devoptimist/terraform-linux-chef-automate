@@ -30,7 +30,7 @@ locals {
 
 module "chef_automate_build" {
   source           = "devoptimist/policyfile/chef"
-  version          = "0.0.5"
+  version          = "0.0.7"
   ips              = var.ips
   instance_count   = local.instance_count
   dna              = local.dna
@@ -40,6 +40,7 @@ module "chef_automate_build" {
   user_name        = var.ssh_user_name
   user_pass        = var.ssh_user_pass
   user_private_key = var.ssh_user_private_key
+  timeout          = var.timeout
 }
 
 data "external" "a2_secrets" {
