@@ -37,7 +37,7 @@ variable "timeout" {
 variable "cookbooks" {
   description = "the cookbooks used to deploy chef automate"
   default = {
-    "chef_automate_wrapper" = "github: 'devoptimist/chef_automate_wrapper', tag: 'v0.1.7'",
+    "chef_automate_wrapper" = "github: 'devoptimist/chef_automate_wrapper', tag: 'v0.1.8'",
     "chef-ingredient" = "github: 'chef-cookbooks/chef-ingredient', tag: 'v3.1.1'"
   }
 }
@@ -46,6 +46,12 @@ variable "runlist" {
   description = "The chef run list used to deploy chef automate"
   type        = list(string)
   default     = ["chef_automate_wrapper::default"]
+}
+
+variable "policyfile_name" {
+  description = "The name to give the resulting policy file"
+  type        = string
+  default     = "chef_automate"
 }
 
 ################ attribute json #####################

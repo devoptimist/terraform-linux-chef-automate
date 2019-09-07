@@ -40,6 +40,7 @@ module "chef_automate_build" {
   user_name        = var.ssh_user_name
   user_pass        = var.ssh_user_pass
   user_private_key = var.ssh_user_private_key
+  policyfile_name  = var.policyfile_name
   timeout          = var.timeout
 }
 
