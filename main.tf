@@ -29,7 +29,7 @@ locals {
 }
 
 module "chef_automate_build" {
-  source           = "devoptimist/policyfile/chef"
+  source           = "srb3/policyfile/chef"
   version          = "0.0.8"
   ips              = var.ips
   instance_count   = local.instance_count
@@ -47,7 +47,7 @@ module "chef_automate_build" {
 data "external" "a2_secrets" {
   count      = local.instance_count
   program    = ["bash", "${path.module}/files/data_source.sh"]
-  depends_on = ["module.chef_automate_build"]
+  depends_on = [module.chef_automate_build]
 
   query = {
     ssh_user        = var.ssh_user_name
