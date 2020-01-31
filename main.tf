@@ -23,6 +23,7 @@ locals {
     for ip in var.ips :
     {
       "chef_automate_wrapper" = {
+        "dummy" = var.module_input
       }
     }
   ]

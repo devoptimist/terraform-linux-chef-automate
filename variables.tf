@@ -127,3 +127,9 @@ variable "cert_keys" {
   type        = list(string)
   default     = []
 }
+
+variable "module_input" {
+  description = "An additional module input if needed"
+  type        = string
+  default     = "no_dependencies"
+}
