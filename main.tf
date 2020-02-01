@@ -5,6 +5,7 @@ locals {
     {
       "chef_automate_wrapper" = {
         "channel"         = var.channel,
+        "products"        = jsonencode(var.products),
         "version"         = var.install_version,
         "config"          = var.config,
         "accept_license"  = var.accept_license,

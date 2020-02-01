@@ -38,7 +38,7 @@ variable "cookbooks" {
   description = "the cookbooks used to deploy chef automate"
   default = {
     "chef_automate_wrapper" = "github: 'srb3/chef_automate_wrapper', tag: 'v0.1.8'",
-    "chef-ingredient" = "github: 'chef-cookbooks/chef-ingredient', tag: 'v3.1.1'"
+    "chef-ingredient" = "github: 'srb3/chef-ingredient', branch: 'products'"
   }
 }
 
@@ -66,6 +66,12 @@ variable "channel" {
   description = "The chef install channel to use for the chef automate"
   type        = string
   default     = "current"
+}
+
+variable "products" {
+  description = "The products you want to install with chef automate"
+  type        = list
+  default     = ["automate"]
 }
 
 variable "install_version" {
