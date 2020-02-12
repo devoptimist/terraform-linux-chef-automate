@@ -21,3 +21,11 @@ output "token" {
 output "url" {
   value = data.external.a2_secrets[*].result["url"]
 }
+
+output "data_collector_token" {
+  value = data.external.a2_secrets[*].result["token"]
+}
+
+output "data_collector_url" {
+  value = data.external.a2_secrets[*].result["url"]
+}
