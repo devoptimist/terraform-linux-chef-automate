@@ -27,5 +27,5 @@ output "data_collector_token" {
 }
 
 output "data_collector_url" {
-  value = "${data.external.a2_secrets[*].result["url"]}/data-collector/v0/"
+  value = formatlist("%s/data-collector/v0/",data.external.a2_secrets[*].result["url"])
 }
