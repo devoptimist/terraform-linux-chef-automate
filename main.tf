@@ -4,19 +4,21 @@ locals {
     for ip in var.ips :
     {
       "chef_automate_wrapper" = {
-        "channel"         = var.channel,
-        "products"        = var.products,
-        "version"         = var.install_version,
-        "config"          = var.config,
-        "accept_license"  = var.accept_license,
-        "creds_json_path" = var.json_credentials_path,
-        "dc_token"        = var.data_collector_token,
-        "fqdn"            = length(var.fqdns) != 0 ? var.fqdns[index(var.ips, ip)] : "",
-        "cert"            = length(var.certs) != 0 ? var.certs[index(var.ips, ip)] : "",
-        "cert_key"        = length(var.cert_keys) != 0 ? var.cert_keys[index(var.ips, ip)] : "",
-        "admin_password"  = var.admin_password,
-        "data_script"     = var.data_source_script_path,
-        "license"         = var.chef_automate_license
+        "channel"                 = var.channel,
+        "products"                = var.products,
+        "version"                 = var.install_version,
+        "config"                  = var.config,
+        "accept_license"          = var.accept_license,
+        "creds_json_path"         = var.json_credentials_path,
+        "dc_token"                = var.data_collector_token,
+        "hostname_use_private_ip" = var.hostname_use_private_ip,
+        "hostname_use_hostname"   = var.hostname_use_hostname,
+        "fqdn"                    = length(var.fqdns) != 0 ? var.fqdns[index(var.ips, ip)] : "",
+        "cert"                    = length(var.certs) != 0 ? var.certs[index(var.ips, ip)] : "",
+        "cert_key"                = length(var.cert_keys) != 0 ? var.cert_keys[index(var.ips, ip)] : "",
+        "admin_password"          = var.admin_password,
+        "data_script"             = var.data_source_script_path,
+        "license"                 = var.chef_automate_license
       }
     }
   ]

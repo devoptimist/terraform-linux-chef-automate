@@ -104,6 +104,18 @@ variable "data_collector_token" {
   default     = ""
 }
 
+variable "hostname_use_private_ip" {
+  description = "Use the private ip address of the instance as the chef automate hostname"
+  type        = bool
+  default     = false
+}
+
+variable "hostname_use_hostname" {
+  description = "Use the hostname of the instance as the chef automate hostname"
+  type        = bool
+  default     = false
+}
+
 variable "admin_password" {
   description = "Sets the automate admin password"
   type        = string
