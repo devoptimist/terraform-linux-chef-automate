@@ -37,7 +37,7 @@ variable "timeout" {
 variable "cookbooks" {
   description = "the cookbooks used to deploy chef automate"
   default = {
-    "chef_automate_wrapper" = "github: 'srb3/chef_automate_wrapper', tag: 'v0.1.9-20200302193642'",
+    "chef_automate_wrapper" = "github: 'srb3/chef_automate_wrapper', tag: 'v0.1.9-20200325182617'",
     "chef-ingredient" = "github: 'srb3/chef-ingredient', branch: 'products'"
   }
 }
