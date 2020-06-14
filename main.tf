@@ -32,7 +32,7 @@ module "chef_automate_build" {
   user_pass         = var.ssh_user_pass
   user_private_key  = var.ssh_user_private_key
   config            = local.dna
-  effortless_pkg    = var.automate_effortless_pkg
+  effortless_pkg    = var.automate_effortless_package
   module_depends_on = var.module_depends_on
 }
 
