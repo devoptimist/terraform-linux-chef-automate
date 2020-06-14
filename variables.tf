@@ -140,8 +140,8 @@ variable "cert_keys" {
   default     = []
 }
 
-variable "module_input" {
-  description = "An additional module input if needed"
-  type        = string
-  default     = "no_dependencies"
+variable "module_depends_on" {
+  description = "List of modules or resources this module depends on"
+  type        = list(any)
+  default     = []
 }

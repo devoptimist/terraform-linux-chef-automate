@@ -12,7 +12,7 @@ This terraform module will deploy a chef automate to one or more servers
 
 module "chef_automate" {
   source               = "devoptimist/chef-automate/linux"
-  version              = "0.0.1"
+  version              = "0.0.26"
   ips                  = ["172.16.0.23"]
   instance_count       = 1
   ssh_user_name        = "ec2-user"
