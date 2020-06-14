@@ -25,14 +25,14 @@ locals {
 
 module "chef_automate_build" {
   source            = "srb3/effortless-bootstrap/chef"
-  version           = "0.0.16"
+  version           = "0.0.17"
   ips               = var.ips
   instance_count    = local.instance_count
   user_name         = var.ssh_user_name
   user_pass         = var.ssh_user_pass
   user_private_key  = var.ssh_user_private_key
   config            = local.dna
-  effortless_pkg    = var.effortless_pkg
+  effortless_pkg    = var.automate_effortless_pkg
   module_depends_on = var.module_depends_on
 }
 
