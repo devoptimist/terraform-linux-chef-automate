@@ -25,7 +25,7 @@ locals {
 
 module "chef_automate_build" {
   source            = "srb3/policyfile/chef"
-  version           = "0.0.11"
+  version           = "0.0.12"
   ips               = var.ips
   instance_count    = local.instance_count
   dna               = local.dna
