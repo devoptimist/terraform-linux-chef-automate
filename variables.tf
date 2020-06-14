@@ -32,26 +32,12 @@ variable "timeout" {
   default     = "5m"
 }
 
-################# policyfile module ###################
+################# effortless settings ############
 
-variable "cookbooks" {
-  description = "the cookbooks used to deploy chef automate"
-  default = {
-    "chef_automate_wrapper" = "github: 'srb3/chef_automate_wrapper', tag: 'v0.1.9-20200325182617'",
-    "chef-ingredient" = "github: 'srb3/chef-ingredient', branch: 'products'"
-  }
-}
-
-variable "runlist" {
-  description = "The chef run list used to deploy chef automate"
-  type        = list(string)
-  default     = ["chef_automate_wrapper::default"]
-}
-
-variable "policyfile_name" {
-  description = "The name to give the resulting policy file"
+variable "automate_effortless_package" {
+  description = "The name of the chef automate effortless package"
   type        = string
-  default     = "chef_automate"
+  default     = "srb3/chef_automate_wrapper/0.1.9/20200325182617"
 }
 
 ################ attribute json #####################
