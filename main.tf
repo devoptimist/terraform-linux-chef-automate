@@ -24,19 +24,16 @@ locals {
 }
 
 module "chef_automate_build" {
-  source            = "srb3/policyfile/chef"
-  version           = "0.0.12"
+  source            = "srb3/effortless-bootstrap/chef"
+  version           = "0.0.16"
   ips               = var.ips
   instance_count    = local.instance_count
-  dna               = local.dna
-  module_depends_on = var.module_depends_on
-  cookbooks         = var.cookbooks
-  runlist           = var.runlist
   user_name         = var.ssh_user_name
   user_pass         = var.ssh_user_pass
   user_private_key  = var.ssh_user_private_key
-  policyfile_name   = var.policyfile_name
-  timeout           = var.timeout
+  config            = local.dna
+  effortless_pkg    = var.effortless_pkg
+  module_depends_on = var.module_depends_on
 }
 
 data "external" "a2_secrets" {
