@@ -84,7 +84,7 @@ variable "json_credentials_path" {
   default     = "/tmp/automate-credentials.json"
 }
 
-variable "data_collector_token" {
+variable "ingest_token" {
   description = "The token used to access the data collector end point"
   type        = string
   default     = ""

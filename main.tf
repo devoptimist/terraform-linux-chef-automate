@@ -10,7 +10,7 @@ locals {
         "config"          = var.config,
         "accept_license"  = var.accept_license,
         "creds_json_path" = var.json_credentials_path,
-        "dc_token"        = var.data_collector_token,
+        "dc_token"        = var.ingest_token,
         "hostname_method" = var.hostname_method,
         "fqdn"            = length(var.fqdns) != 0 ? var.fqdns[index(var.ips, ip)] : "",
         "cert"            = length(var.certs) != 0 ? var.certs[index(var.ips, ip)] : "",
