@@ -15,7 +15,7 @@ output "admin_pass" {
 }
 
 output "token" {
-  value = var.ingest_token
+  value = data.external.a2_secrets[*].result["token"]
 }
 
 output "url" {
@@ -23,7 +23,7 @@ output "url" {
 }
 
 output "data_collector_token" {
-  value = var.ingest_token
+  value = data.external.a2_secrets[*].result["token"]
 }
 
 output "data_collector_url" {
