@@ -25,7 +25,7 @@ locals {
 
 module "chef_automate_build" {
   source            = "srb3/effortless-bootstrap/chef"
-  version           = "0.0.17"
+  version           = "0.13.0"
   ips               = var.ips
   instance_count    = local.instance_count
   user_name         = var.ssh_user_name
