@@ -22,9 +22,8 @@ locals {
 }
 
 module "chef_automate_build" {
-  source            = "/home/steveb/workspace/terraform/modules/srb3/terraform-chef-effortless-bootstrap"
-  # source            = "srb3/effortless-bootstrap/chef"
-  # version           = "0.13.0"
+  source            = "srb3/effortless-bootstrap/chef"
+  version           = "0.13.1"
   ip                = var.ip
   user_name         = var.ssh_user_name
   user_pass         = var.ssh_user_pass
