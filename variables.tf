@@ -1,12 +1,8 @@
 ################ connection ###########################
 
-variable "ips" {
-  description = "A list of ips to install chef automate on"
-  type        = list(string)
-}
-
-variable "instance_count" {
-  description = "The number of automate instances being created"
+variable "ip" {
+  description = "An ip address to install chef automate on"
+  type        = string
 }
 
 variable "ssh_user_name" {
@@ -37,7 +33,7 @@ variable "timeout" {
 variable "automate_effortless_package" {
   description = "The name of the chef automate effortless package"
   type        = string
-  default     = "srb3/chef_automate_wrapper/0.1.9/20200325182617"
+  default     = "srb3/chef_automate_wrapper/0.1.9/20200924080756"
 }
 
 ################ attribute json #####################
@@ -108,26 +104,44 @@ variable "chef_automate_license" {
   default     = ""
 }
 
-variable "fqdns" {
-  description = "A list of fully qualified host names to apply to each automate server being created"
-  type        = list(string)
-  default     = []
+variable "fqdn" {
+  description = "A fully qualified host name to apply to the automate server"
+  type        = string
+  default     = ""
 }
 
-variable "certs" {
-  description = "A list of ssl certificates to apply to each automate server"
-  type        = list(string)
-  default     = []
+variable "cert" {
+  description = "An ssl certificate to apply the automate server"
+  type        = string
+  default     = ""
 }
 
-variable "cert_keys" {
-  description = "A list of ssl private keys to apply to each automate server"
-  type        = list(string)
-  default     = []
+variable "cert_key" {
+  description = "An ssl private key to apply to the automate server"
+  type        = string
+  default     = ""
 }
 
-variable "module_depends_on" {
-  description = "List of modules or resources this module depends on"
-  type        = list(any)
-  default     = []
+variable "patching_override_origin" {
+  description = "If you want to deploy your own patches to chef automate put your habitat origin here"
+  type        = string
+  default     = "chef"
+}
+
+variable "patching_hartifacts_path" {
+  description = "The location to configure chef automate to look for patches"
+  type        = string
+  default     = "/hab/results"
+}
+
+variable "proxy_string" {
+  description = "If needed set a proxy server details in this variable"
+  type        = string
+  default     = ""
+}
+
+variable "no_proxy_string" {
+  description = "If needed set the no_proxy details in this variable"
+  type        = string
+  default     = ""
 }

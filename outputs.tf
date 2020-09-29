@@ -1,5 +1,5 @@
 output "ip" {
-  value = var.ips
+  value = var.ip
 }
 
 output "ssh_user" {
@@ -7,25 +7,25 @@ output "ssh_user" {
 }
 
 output "admin_user" {
-  value = data.external.a2_secrets[*].result["username"]
+  value = data.external.a2_secrets.result["username"]
 }
 
 output "admin_pass" {
-  value = data.external.a2_secrets[*].result["password"]
+  value = data.external.a2_secrets.result["password"]
 }
 
 output "token" {
-  value = data.external.a2_secrets[*].result["token"]
+  value = data.external.a2_secrets.result["token"]
 }
 
 output "url" {
-  value = data.external.a2_secrets[*].result["url"]
+  value = data.external.a2_secrets.result["url"]
 }
 
 output "data_collector_token" {
-  value = data.external.a2_secrets[*].result["token"]
+  value = data.external.a2_secrets.result["token"]
 }
 
 output "data_collector_url" {
-  value = formatlist("%s/data-collector/v0/",data.external.a2_secrets[*].result["url"])
+  value = formatlist("%s/data-collector/v0/",data.external.a2_secrets.result["url"])
 }
