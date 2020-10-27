@@ -1,0 +1,25 @@
+---
+name: default
+inputs:
+  - name: admin_pass 
+    description: the admin password in use by chef automate
+    type: string
+  - name: url
+    description: the url for chef automate 
+    type: string
+  - name: token
+    description: the data collector token crated for chef automate 
+    type: string
+  - name: data_collector_url 
+    description: the data collector url for chef automate
+    type: string
+  - name: private_ip 
+    description: the private ip chef automate is listening on
+    type: string
+  - name: expected_admin_password
+    description: the value we expect the admin password to be set to
+    type: string
+  - name: expected_token
+    description: the value we expect the automate token to be set to
+    type: string
+

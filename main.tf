@@ -1,4 +1,20 @@
 locals {
+  consul_policyfile_name = "consul"
+
+  tmp_path = "${var.tmp_path}/${split("/", var.automate_effortless_package)[1]}"
+  data_script = "${local.tmp_path}/${var.data_source_script}"
+
+  consul_tmp_path = "${var.tmp_path}/${local.consul_policyfile_name}"
+
+  consul_populate_script_lock_file = "${local.consul_tmp_path}/consul_populate.lock"
+
+  consul_populate_script = templatefile("${path.module}/templates/consul_populate_script", {
+    data_script     = local.data_script
+    consul_tmp_path = local.consul_tmp_path
+    consul_port     = var.consul_port
+    lock_file       = local.consul_populate_script_lock_file
+  })
+
   dna = {
     "chef_automate_wrapper" = {
       "channel"                  = var.channel,
@@ -13,7 +29,7 @@ locals {
       "cert"                     = var.cert,
       "cert_key"                 = var.cert_key,
       "admin_password"           = var.admin_password,
-      "data_script"              = var.data_source_script_path,
+      "data_script"              = local.data_script,
       "license"                  = var.chef_automate_license,
       "patching_override_origin" = var.patching_override_origin
       "patching_hartifacts_path" = var.patching_hartifacts_path
@@ -34,15 +50,35 @@ module "chef_automate_build" {
   effortless_pkg    = var.automate_effortless_package
 }
 
-data "external" "a2_secrets" {
-  program    = ["bash", "${path.module}/files/data_source.sh"]
-  depends_on = [module.chef_automate_build]
+module "consul" {
+  source                    = "srb3/consul/util"
+  version                   = "0.13.3"
+  ip                        = var.ip
+  user_name                 = var.ssh_user_name
+  user_private_key          = var.ssh_user_private_key
+  populate_script           = local.consul_populate_script
+  populate_script_lock_file = local.consul_populate_script_lock_file
+  datacenter                = var.consul_datacenter
+  linux_tmp_path            = var.tmp_path
+  policyfile_name           = local.consul_policyfile_name
+  port                      = var.consul_port
+  log_level                 = var.consul_log_level
+  depends_on                = [module.chef_automate_build]
+}
 
-  query = {
-    ssh_user        = var.ssh_user_name
-    ssh_key         = var.ssh_user_private_key
-    ssh_pass        = var.ssh_user_pass
-    target_ip       = var.ip
-    target_script   = var.data_source_script_path
+provider "consul" {
+  address = "${var.ip}:${var.consul_port}"
+}
+
+data "consul_keys" "a2_secrets" {
+  depends_on = [module.consul]
+  datacenter = var.consul_datacenter
+  key {
+    name = "data"
+    path = "a2-secrets"
   }
+}
+
+locals {
+  a2_secrets = jsondecode(data.consul_keys.a2_secrets.var.data)
 }

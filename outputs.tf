@@ -7,25 +7,25 @@ output "ssh_user" {
 }
 
 output "admin_user" {
-  value = data.external.a2_secrets.result["username"]
+  value = local.a2_secrets["username"]
 }
 
 output "admin_pass" {
-  value = data.external.a2_secrets.result["password"]
+  value = local.a2_secrets["password"]
 }
 
 output "token" {
-  value = data.external.a2_secrets.result["token"]
+  value = local.a2_secrets["token"]
 }
 
 output "url" {
-  value = data.external.a2_secrets.result["url"]
+  value = local.a2_secrets["url"]
 }
 
 output "data_collector_token" {
-  value = data.external.a2_secrets.result["token"]
+  value = local.a2_secrets["token"]
 }
 
 output "data_collector_url" {
-  value = formatlist("%s/data-collector/v0/",data.external.a2_secrets.result["url"])
+  value = format("%s/data-collector/v0/", local.a2_secrets["url"])
 }

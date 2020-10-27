@@ -28,6 +28,12 @@ variable "timeout" {
   default     = "5m"
 }
 
+variable "tmp_path" {
+  description = "A path to stage files and config"
+  type        = string
+  default     = "/var/tmp"
+}
+
 ################# effortless settings ############
 
 variable "automate_effortless_package" {
@@ -38,10 +44,10 @@ variable "automate_effortless_package" {
 
 ################ attribute json #####################
 
-variable "data_source_script_path" {
-  description = "The location of the automate data source script"
+variable "data_source_script" {
+  description = "The name of the automate data source script"
   type        = string
-  default     = "/var/tmp/chef_automate_details.sh"
+  default     = "chef_automate_details.sh"
 }
 
 variable "channel" {
@@ -144,4 +150,24 @@ variable "no_proxy_string" {
   description = "If needed set the no_proxy details in this variable"
   type        = string
   default     = ""
+}
+
+############ consul settings #####################
+
+variable "consul_datacenter" {
+  description = "The name of the datacenter to use for consul"
+  type        = string
+  default     = "dc1"
+}
+
+variable "consul_port" {
+  description = "The port number to use for consul"
+  type        = string
+  default     = "8500"
+}
+
+variable "consul_log_level" {
+  description = "The log level to run the consul service as"
+  type        = string
+  default     = "info"
 }
