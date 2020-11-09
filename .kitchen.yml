@@ -10,11 +10,6 @@ platforms:
 
 verifier:
   name: terraform
-  systems:
-    - name: system
-      backend: local
-      attrs:
-        - test/integration/aws_chef_automate/attrs.yml
 
 suites:
   - name: aws_chef_automate
@@ -22,3 +17,20 @@ suites:
       name: terraform
       command_timeout: 1800
       root_module_directory: test/fixtures/aws_chef_automate
+    verifier:
+      systems:
+        - name: default
+          backend: local
+          attrs:
+            - test/integration/aws_chef_automate/attrs.yml
+  - name: aws_chef_automate_chef_server
+    driver:
+      name: terraform
+      command_timeout: 1800
+      root_module_directory: test/fixtures/aws_chef_automate_chef_server
+    verifier:
+      systems:
+        - name: chef_server
+          backend: local
+          attrs:
+            - test/integration/aws_chef_automate_chef_server/attrs.yml

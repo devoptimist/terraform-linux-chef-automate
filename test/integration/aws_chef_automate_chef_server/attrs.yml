@@ -1,0 +1,6 @@
+---
+expected_token: inspectoken
+expected_admin_password: adminuserpass
+expected_validation_client_name: acmecorp-validator
+expected_org_name: acmecorp
+expected_node_name: jdoe

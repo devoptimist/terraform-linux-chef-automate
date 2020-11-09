@@ -39,7 +39,7 @@ variable "tmp_path" {
 variable "automate_effortless_package" {
   description = "The name of the chef automate effortless package"
   type        = string
-  default     = "srb3/chef_automate_wrapper/0.1.9/20200924080756"
+  default     = "srb3/chef_automate_wrapper/0.1.9/20201109004903"
 }
 
 ################ attribute json #####################
@@ -60,6 +60,18 @@ variable "products" {
   description = "The products you want to install with chef automate"
   type        = list
   default     = ["automate"]
+}
+
+variable "chef_server_users" {
+  description = "A map of users to be added to the chef server and their details"
+  type        = map(object({ serveradmin=bool, first_name=string, last_name=string, email=string, password=string }))
+  default     = {}
+}
+
+variable "chef_server_orgs" {
+  description = "A map of organisations to be added to the chef server"
+  type        = map(object({ admins=list(string), org_full_name=string }))
+  default     = {}
 }
 
 variable "install_version" {

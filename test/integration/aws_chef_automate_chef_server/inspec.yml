@@ -1,0 +1,54 @@
+---
+name: default
+inputs:
+  - name: admin_pass 
+    description: the admin password in use by chef automate
+    type: string
+  - name: url
+    description: the url for chef automate 
+    type: string
+  - name: token
+    description: the data collector token crated for chef automate 
+    type: string
+  - name: data_collector_url 
+    description: the data collector url for chef automate
+    type: string
+  - name: private_ip 
+    description: the private ip chef automate is listening on
+    type: string
+  - name: expected_admin_password
+    description: the value we expect the admin password to be set to
+    type: string
+  - name: expected_token
+    description: the value we expect the automate token to be set to
+    type: string
+  - name: validation_pem
+    description: The content of the validation pem for the init org
+    type: string
+  - name: validation_client_name
+    description: The name of the validation client
+    type: string
+  - name: expected_validation_client_name
+    description: The expected name of the validation client
+    type: string
+  - name: client_pem
+    description: The content of the client pem for the init user
+    type: string
+  - name: org_name
+    description: The name of the init org 
+    type: string
+  - name: expected_org_name
+    description: The expected name of the init org
+    type: string
+  - name: org_url
+    description: The url for the init org
+    type: string
+  - name: base_url
+    description: The base url for the chef server
+    type: string
+  - name: node_name
+    description: The node name crated for the init user
+    type: string
+  - name: expected_node_name
+    description: The expected node name crated for the init user
+    type: string

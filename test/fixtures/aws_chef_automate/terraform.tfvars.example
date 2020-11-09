@@ -1,0 +1,13 @@
+aws_region     = ""
+aws_profile    = ""
+aws_creds_file = ""
+aws_key_name   = ""
+
+chef_automate_ingress_cidrs         = [""]
+chef_automate_ssh_user_private_key  = ""
+
+chef_automate_products = ["automate"]
+chef_automate_ingest_token = "inspectoken"
+chef_automate_admin_password = "adminuserpass"
+
+tags = {}

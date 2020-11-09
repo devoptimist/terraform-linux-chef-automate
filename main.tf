@@ -1,4 +1,9 @@
 locals {
+  orgs = var.chef_server_orgs
+  users = var.chef_server_users
+  init_user = length(keys(local.orgs)) != 0 ? local.orgs[keys(local.orgs)[0]]["admins"][0] : ""
+  init_org  = length(keys(local.orgs)) != 0 ? keys(local.orgs)[0] : ""
+
   consul_policyfile_name = "consul"
 
   tmp_path = "${var.tmp_path}/${split("/", var.automate_effortless_package)[1]}"
@@ -31,8 +36,12 @@ locals {
       "admin_password"           = var.admin_password,
       "data_script"              = local.data_script,
       "license"                  = var.chef_automate_license,
-      "patching_override_origin" = var.patching_override_origin
-      "patching_hartifacts_path" = var.patching_hartifacts_path
+      "patching_override_origin" = var.patching_override_origin,
+      "patching_hartifacts_path" = var.patching_hartifacts_path,
+      "init_user"                = local.init_user,
+      "init_org"                 = local.init_org,
+      "chef_users"               = local.users,
+      "chef_orgs"                = local.orgs,
     }
   }
 }
