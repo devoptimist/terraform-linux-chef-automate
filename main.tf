@@ -75,19 +75,14 @@ module "consul" {
   depends_on                = [module.chef_automate_build]
 }
 
-provider "consul" {
-  address = "${var.ip}:${var.consul_port}"
-}
-
-data "consul_keys" "a2_secrets" {
-  depends_on = [module.consul]
-  datacenter = var.consul_datacenter
-  key {
-    name = "data"
-    path = "a2-secrets"
+data "http" "a2_secrets" {
+  url = "http://${var.ip}:${var.consul_port}/v1/kv/a2-secrets?raw"
+  request_headers = {
+    Accept = "application/json"
   }
+  depends_on = [module.consul]
 }
 
 locals {
-  a2_secrets = jsondecode(data.consul_keys.a2_secrets.var.data)
+  a2_secrets = jsondecode(data.http.a2_secrets.body)
 }
