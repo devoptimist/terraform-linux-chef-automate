@@ -64,13 +64,13 @@ variable "products" {
 
 variable "chef_server_users" {
   description = "A map of users to be added to the chef server and their details"
-  type        = map(object({ serveradmin=bool, first_name=string, last_name=string, email=string, password=string }))
+  type        = map(object({ serveradmin = bool, first_name = string, last_name = string, email = string, password = string }))
   default     = {}
 }
 
 variable "chef_server_orgs" {
   description = "A map of organisations to be added to the chef server"
-  type        = map(object({ admins=list(string), org_full_name=string }))
+  type        = map(object({ admins = list(string), org_full_name = string }))
   default     = {}
 }
 

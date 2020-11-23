@@ -1,5 +1,5 @@
 module "aws_chef_automate" {
-  source = "../../../examples/aws_chef_automate"
+  source                             = "../../../examples/aws_chef_automate"
   aws_region                         = var.aws_region
   aws_profile                        = var.aws_profile
   aws_creds_file                     = var.aws_creds_file

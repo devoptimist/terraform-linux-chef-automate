@@ -20,10 +20,10 @@ locals {
 
 
   public_subnets = ["10.0.1.0/24"]
-  azs            = [
-                     data.aws_availability_zones.available.names[0],
-                     data.aws_availability_zones.available.names[1]
-                   ]
+  azs = [
+    data.aws_availability_zones.available.names[0],
+    data.aws_availability_zones.available.names[1]
+  ]
 
   sg_data = {
     "automate" = {
@@ -85,7 +85,7 @@ module "instance" {
   security_group_ids          = each.value["security_group_ids"]
   subnet_ids                  = each.value["subnet_ids"]
   root_block_device           = each.value["root_block_device"]
-  associate_public_ip_address = each.value["public_ip_address"] 
+  associate_public_ip_address = each.value["public_ip_address"]
   tags                        = var.tags
 }
 

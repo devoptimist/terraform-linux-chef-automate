@@ -3,7 +3,7 @@ output "private_ip" {
 }
 
 output "admin_pass" {
-  value = module.aws_chef_automate_chef_server.admin_pass 
+  value = module.aws_chef_automate_chef_server.admin_pass
 }
 
 output "token" {

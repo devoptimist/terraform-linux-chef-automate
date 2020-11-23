@@ -3,7 +3,7 @@ output "private_ip" {
 }
 
 output "admin_pass" {
-  value = module.chef_automate.admin_pass 
+  value = module.chef_automate.admin_pass
 }
 
 output "token" {

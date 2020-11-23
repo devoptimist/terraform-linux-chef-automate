@@ -1,12 +1,12 @@
 locals {
-  orgs = var.chef_server_orgs
-  users = var.chef_server_users
+  orgs      = var.chef_server_orgs
+  users     = var.chef_server_users
   init_user = length(keys(local.orgs)) != 0 ? local.orgs[keys(local.orgs)[0]]["admins"][0] : ""
   init_org  = length(keys(local.orgs)) != 0 ? keys(local.orgs)[0] : ""
 
   consul_policyfile_name = "consul"
 
-  tmp_path = "${var.tmp_path}/${split("/", var.automate_effortless_package)[1]}"
+  tmp_path    = "${var.tmp_path}/${split("/", var.automate_effortless_package)[1]}"
   data_script = "${local.tmp_path}/${var.data_source_script}"
 
   consul_tmp_path = "${var.tmp_path}/${local.consul_policyfile_name}"
@@ -47,21 +47,21 @@ locals {
 }
 
 module "chef_automate_build" {
-  source            = "srb3/effortless-bootstrap/chef"
-  version           = "0.13.1"
-  ip                = var.ip
-  user_name         = var.ssh_user_name
-  user_pass         = var.ssh_user_pass
-  user_private_key  = var.ssh_user_private_key
-  config            = local.dna
-  proxy_string      = var.proxy_string
-  no_proxy_string   = var.no_proxy_string
-  effortless_pkg    = var.automate_effortless_package
+  source           = "srb3/effortless-bootstrap/chef"
+  version          = "0.13.1"
+  ip               = var.ip
+  user_name        = var.ssh_user_name
+  user_pass        = var.ssh_user_pass
+  user_private_key = var.ssh_user_private_key
+  config           = local.dna
+  proxy_string     = var.proxy_string
+  no_proxy_string  = var.no_proxy_string
+  effortless_pkg   = var.automate_effortless_package
 }
 
 module "consul" {
   source                    = "srb3/consul/util"
-  version                   = "0.13.3"
+  version                   = "0.13.5"
   ip                        = var.ip
   user_name                 = var.ssh_user_name
   user_private_key          = var.ssh_user_private_key
